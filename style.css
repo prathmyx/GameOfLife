@@ -51,24 +51,25 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 
-    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+
+    margin: 10px auto;
+    padding: 20px;
+
     background-color: var(--container);
     border-radius: 10px;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    
-    min-height: 20vh;
-    height: fit-content;
-    width: fit-content;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 #main-board {
     display: grid;
     grid-template-columns: repeat(25, 20px);
-    grid-auto-rows: 20px;
+    grid-template-rows: repeat(25, 20px);
     gap: 1.5px;
 
     border: 1px solid #d1d5db;
