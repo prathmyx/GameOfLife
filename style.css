@@ -2,6 +2,9 @@
     --bg-color: #ddf;
     --container: white;
     --text-color: black;
+    --rows: 20;
+    --cols: 20;
+    --size: 25px;
 }
 
 body {
@@ -68,8 +71,11 @@ body {
 
 #main-board {
     display: grid;
-    grid-template-columns: repeat(25, 20px);
-    grid-template-rows: repeat(25, 20px);
+    grid-template-columns: repeat(var(--cols), var(--size));
+    grid-template-rows: repeat(var(--rows), var(--size));
+    /* grid-template-columns: repeat(25, 20px); */
+    /* grid-template-rows: repeat(25, 20px); */
+    
     gap: 1.5px;
 
     border: 1px solid #d1d5db;
