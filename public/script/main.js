@@ -16,3 +16,17 @@ function next() {
     board = getNextBoard();
     render();
 }
+
+const startButton = document.getElementById('start-btn');
+let intervalId = null;
+
+startButton.addEventListener('click', () => {
+    if (intervalId == null) {
+        intervalId = setInterval(next, 1000);
+        startButton.textContent = 'Stop';
+    } else {
+        clearInterval(intervalId);
+        intervalId = null;
+        startButton.textContent = 'Start';
+    }
+});
