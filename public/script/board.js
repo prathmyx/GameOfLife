@@ -67,7 +67,7 @@ export function getNextBoard(board) {
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLS; j++) {
             const alive = board[i][j];
-            const neighbors = getNeighborCount(board, i, j);
+            const neighbors = getAdjacentCount(board, i, j);
 
             if (alive && (neighbors === 2 || neighbors === 3)) {
                 nextBoard[i][j] = true;
