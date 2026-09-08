@@ -1,7 +1,7 @@
 import { ROWS, COLS } from "./config.js";
 
 export function initBoard() {
-    return Array.from({length : ROWS}, () => Array(COLS).fill(false))   
+    return Array.from({length : ROWS}, () => Array(COLS).fill(false));
 }
 
 export function drawBoard(board) {
@@ -59,4 +59,25 @@ export function getAdjacentCount(board, row, col) {
     }
 
     return count;
+}
+
+export function getNextBoard(board) {
+    const nextBoard = Array.from({length : ROWS}, () => Array(COLS).fill(false));
+
+    for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLS; j++) {
+            const alive = board[i][j];
+            const neighbors = getNeighborCount(board, i, j);
+
+            if (alive && (neighbors === 2 || neighbors === 3)) {
+                nextBoard[i][j] = true;
+            }
+
+            if (!alive && neighbors === 3) {
+                nextBoard[i][j] = true;
+            }
+        }
+    }
+
+    return nextBoard;
 }
