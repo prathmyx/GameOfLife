@@ -8,8 +8,11 @@ document.documentElement.style.setProperty('--size', `${SIZE}px`);
 let board = initBoard()
 drawBoard(board);
 
+
+const nextButton = document.getElementById('next-btn');
+nextButton.addEventListener('click', () => {next();});
+
 function next() {
     board = getNextBoard(board);
-
     render(board);
 }
