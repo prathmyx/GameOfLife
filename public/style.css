@@ -49,7 +49,38 @@ body {
     border-radius: 2px;    
 }
 
-#container {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 10px;
     background-color: var(--container);
     border-radius: 10px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    
+    min-height: 20vh;
+    height: fit-content;
+    width: fit-content;
+}
+
+#main-board {
+    display: grid;
+    grid-template-columns: repeat(25, 20px);
+    grid-auto-rows: 20px;
+    gap: 1.5px;
+
+    border: 1px solid #d1d5db;
+
+    width: fit-content;
+}
+
+#main-board button {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    cursor: pointer;
 }
