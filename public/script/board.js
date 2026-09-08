@@ -1,10 +1,11 @@
 import { ROWS, COLS } from "./config.js";
+import {board} from "./main.js";
 
 export function initBoard() {
     return Array.from({length : ROWS}, () => Array(COLS).fill(false));
 }
 
-export function drawBoard(board) {
+export function drawBoard() {
     const canvas = document.getElementById('main-board');
     
     for (let row = 0; row < board.length; row++) {
@@ -15,10 +16,10 @@ export function drawBoard(board) {
             cell.dataset.col = col;
 
             if (board[row][col]) cell.classList.add("alive");
-
+            
             cell.addEventListener('click', () => {
                 board[row][col] = !board[row][col];
-                render(board);
+                render();
             })
 
             canvas.appendChild(cell);
@@ -26,7 +27,7 @@ export function drawBoard(board) {
     }
 }
 
-export function render(board) {
+export function render() {
     const cells = document.querySelectorAll("#main-board button");
     
     cells.forEach(cell => {
@@ -37,7 +38,7 @@ export function render(board) {
     });
 }
 
-export function getAdjacentCount(board, row, col) {
+export function getAdjacentCount(row, col) {
     let count = 0;
 
     for (let di = -1; di <= 1; di++) {
@@ -57,13 +58,13 @@ export function getAdjacentCount(board, row, col) {
     return count;
 }
 
-export function getNextBoard(board) {
+export function getNextBoard() {
     const nextBoard = Array.from({length : ROWS}, () => Array(COLS).fill(false));
 
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLS; j++) {
             const alive = board[i][j];
-            const neighbors = getAdjacentCount(board, i, j);
+            const neighbors = getAdjacentCount(i, j);
 
             if (alive && (neighbors === 2 || neighbors === 3)) {
                 nextBoard[i][j] = true;
