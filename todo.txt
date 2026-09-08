@@ -1,0 +1,2 @@
+1. rotate reset button 
+2. edit imported variable

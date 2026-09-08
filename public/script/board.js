@@ -1,5 +1,5 @@
 import { ROWS, COLS } from "./config.js";
-import {board} from "./main.js";
+import {board, population } from "./main.js";
 
 export function initBoard() {
     return Array.from({length : ROWS}, () => Array(COLS).fill(false));
@@ -29,13 +29,18 @@ export function drawBoard() {
 
 export function render() {
     const cells = document.querySelectorAll("#main-board button");
+    const popEl = document.getElementById('population-number');
+    let count = 0;
     
     cells.forEach(cell => {
         const row = Number(cell.dataset.row);
         const col = Number(cell.dataset.col);
-    
+        
+        if (board[row][col]) count++;
         cell.classList.toggle("alive", board[row][col]);
     });
+
+    popEl.textContent = count;
 }
 
 export function getAdjacentCount(row, col) {

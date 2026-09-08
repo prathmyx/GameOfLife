@@ -5,6 +5,7 @@ document.documentElement.style.setProperty('--rows', ROWS);
 document.documentElement.style.setProperty('--cols', COLS);
 document.documentElement.style.setProperty('--size', `${SIZE}px`);
 
+export let population = 0;
 export let board = initBoard();
 drawBoard();
 
