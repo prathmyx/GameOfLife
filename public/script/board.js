@@ -8,20 +8,16 @@ export function drawBoard(board) {
     const canvas = document.getElementById('main-board');
     
     for (let row = 0; row < board.length; row++) {
-        for (let col = 0; col < board.length; col++) {
+        for (let col = 0; col < board[row].length; col++) {
             let cell = document.createElement('button');
 
             cell.dataset.row = row;
             cell.dataset.col = col;
 
-            if (board[row][col]) cell.classList.add(alive);
+            if (board[row][col]) cell.classList.add("alive");
 
             cell.addEventListener('click', () => {
-                const row = +cell.dataset.row;
-                const col = +cell.dataset.col;
-
                 board[row][col] = !board[row][col];
-                
                 render(board);
             })
 
