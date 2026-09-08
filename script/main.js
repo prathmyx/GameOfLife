@@ -5,14 +5,14 @@ document.documentElement.style.setProperty('--rows', ROWS);
 document.documentElement.style.setProperty('--cols', COLS);
 document.documentElement.style.setProperty('--size', `${SIZE}px`);
 
-let board = initBoard()
-drawBoard(board);
+export let board = initBoard();
+drawBoard();
 
 
 const nextButton = document.getElementById('next-btn');
 nextButton.addEventListener('click', () => {next();});
 
 function next() {
-    board = getNextBoard(board);
-    render(board);
+    board = getNextBoard();
+    render();
 }
