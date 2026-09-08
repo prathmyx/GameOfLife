@@ -1,12 +1,11 @@
-const board = document.getElementById('main-board');
+import {ROWS, COLS, SIZE} from "./config.js"
+import { initBoard, drawBoard } from "./board.js"
 
-const COL = 25;
-const ROW = 25;
+document.documentElement.style.setProperty('--rows', ROWS);
+document.documentElement.style.setProperty('--cols', COLS);
+document.documentElement.style.setProperty('--size', `${SIZE}px`);
 
-for (let i = 0; i < COL * ROW; i++) {
-    let li = document.createElement('button');
-    li.addEventListener('click', () => {
-        li.classList.toggle('alive');
-    })
-    board.appendChild(li);
-}
+const canvas = document.getElementById('main-board');
+
+drawBoard(initBoard(ROWS, COLS), canvas);
+
