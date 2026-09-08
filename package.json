@@ -1,0 +1,25 @@
+{
+  "name": "gameoflife",
+  "version": "1.0.0",
+  "description": "John Conway's Game of Life",
+  "keywords": [
+    "maths",
+    "nodejs",
+    "js"
+  ],
+  "homepage": "https://github.com/prathmyx/GameOfLife#readme",
+  "bugs": {
+    "url": "https://github.com/prathmyx/GameOfLife/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prathmyx/GameOfLife.git"
+  },
+  "license": "ISC",
+  "author": "Pratham Yadav",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
