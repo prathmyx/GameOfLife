@@ -89,7 +89,8 @@ body {
 
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 
     width: fit-content;
@@ -97,11 +98,38 @@ body {
 
     margin: 10px auto;
     padding: 20px;
+    padding-top: 0;
 
     background-color: var(--container);
     border-radius: 10px;
 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.access {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    font-size: 0.85rem;;
+}
+
+.access p {
+    margin: 3px;
+}
+
+.access button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: transform 0.ss ease-in-out;
+}
+
+.access button:active{
+    transform: scale(1.1);
 }
 
 #main-board {

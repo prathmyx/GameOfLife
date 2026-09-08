@@ -32,3 +32,9 @@ startButton.addEventListener('click', () => {
         startButton.textContent = 'Start';
     }
 });
+
+const resetButton = document.getElementById('reset-btn');
+resetButton.addEventListener('click', () => {
+    board = initBoard();
+    render();
+})
