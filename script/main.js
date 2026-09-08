@@ -7,6 +7,5 @@ document.documentElement.style.setProperty('--size', `${SIZE}px`);
 
 const board = initBoard()
 
-
 drawBoard(board);
 
