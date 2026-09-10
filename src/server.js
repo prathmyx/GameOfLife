@@ -1,11 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db.js');
 
+const setCORS = require('./middlewares/cors.js');
+
 const healthRouter = require('./Routes/healthRoute.js');
 
 const app = express();
 
 connectDB();
+
+app.use(setCORS);
 
 app.use('/api/v1/health', healthRouter);
 
