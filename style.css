@@ -7,6 +7,12 @@
     --size: 25px;
 }
 
+@media (max-width: 600px) {
+    :root {
+        --size: calc(80vw/var(--cols));
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
