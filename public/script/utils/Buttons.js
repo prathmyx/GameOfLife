@@ -32,3 +32,48 @@ resetButton.addEventListener('click', () => {
     Game.board = initBoard();
     render();
 })
+
+//Auth Setup
+const modal = document.getElementById("authModal");
+
+const loginContainer = document.getElementById("loginFormContainer");
+const signupContainer = document.getElementById("signupFormContainer");
+
+const authBtn = document.getElementById("authBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+const showSignup = document.getElementById("showSignup");
+const showLogin = document.getElementById("showLogin");
+
+
+authBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    showLoginForm();
+});
+
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+
+showSignup.addEventListener("click", () => {
+    showSignupForm();
+});
+
+
+showLogin.addEventListener("click", () => {
+    showLoginForm();
+});
+
+
+function showLoginForm() {
+    loginContainer.style.display = "block";
+    signupContainer.style.display = "none";
+}
+
+
+function showSignupForm() {
+    loginContainer.style.display = "none";
+    signupContainer.style.display = "block";
+}
