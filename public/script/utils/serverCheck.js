@@ -21,7 +21,6 @@ function getPath(status) {
 
 export async function setState() {
     const serverStatus = document.getElementById('server-message');
-    serverStatus.textContent = 'Checking...';
     let status = await isLive();
 
     if (status) {

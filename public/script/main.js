@@ -17,4 +17,4 @@ export const Game = {
 
 Game.draw();
 
-setState();
+setTimeout(setState, 1000);
