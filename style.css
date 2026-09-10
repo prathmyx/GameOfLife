@@ -53,6 +53,90 @@ body {
     border-radius: 2px;    
 }
 
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 3;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.auth-box {
+    position: relative;
+
+    width: 90%;
+    max-width: 400px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.auth-box input {
+    display: block;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.auth-box form > button {
+    width: 100%;
+
+    padding: 12px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.auth-box p {
+    text-align: center;
+}
+
+.auth-box p button {
+    border: none;
+    background: none;
+
+    cursor: pointer;
+
+    text-decoration: underline;
+}
+
 .server-status {
     position: fixed;
     bottom: 20px;
@@ -115,10 +199,10 @@ body {
     transform: scale(0.95);
 }
 
-#login-signup {
+#authBtn {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 1vw;
 
     padding: 10px 13px;
     background: white;
