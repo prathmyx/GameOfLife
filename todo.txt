@@ -2,12 +2,12 @@
 
 
 /api/v1
-get /users
+get /users ++
 get /users/:id 
 get /users/:id/games
 get /users/:id/games/:game
 
-post /users
+post /users ++
 post /users/:id/games 
 
 put /users/:id

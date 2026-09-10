@@ -2,8 +2,8 @@ const userModel = require('../models/user.js');
 
 async function addUser(req, res) {
     try {
-        const {username, email} = req.body;
-        const user = new userModel({username, email});
+        const {username, password} = req.body;
+        const user = new userModel({username, password});
 
         await user.save();
         res.status(201).json(user);
