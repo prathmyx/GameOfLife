@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game of Life</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="head">
+            <h1 class="title">Game of Life</h1>
+            <p class="subtitle">John Conway's Game of Life</p>
+            <div class="divider"></div>
+        </div>
+        <div class="options">
+            <button id="start-btn">Start</button>
+            <button id="next-btn">Next</button>
+            <button id="load-btn">Load</button>
+            <button id="Save">Save</button>
+        </div>
+
+        <div class="container">
+            <div class="access">
+                <p id="population">Population: <span id="population-number">0</span></p>
+                <button id="reset-btn">⭯</button>
+            </div>
+            <div id="main-board"></div>
+        </div>
+
+        <script type="module" src="./script/main.js"></script>
+    </body>
+</html>
