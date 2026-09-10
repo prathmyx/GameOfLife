@@ -9,6 +9,9 @@ document.documentElement.style.setProperty('--size', `${SIZE}px`);
 export const Game = {
     population: 0,
     board: initBoard(),
+    draw: () => {
+        drawBoard();
+    }
 }
 
-drawBoard();
+Game.draw();
