@@ -52,6 +52,33 @@ body {
     border-radius: 2px;    
 }
 
+.server-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 13px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 2;
+}
+
+#server-image {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+#server-message {
+    margin: 0;
+}
+
 .options {
     display: flex;
     flex-direction: row;
