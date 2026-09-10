@@ -14,8 +14,13 @@ export async function isLive() {
     }
 }
 
+function getPath(status) {
+    if (status) return './assets/cloud-tick.png';
+    return './assets/cloud-cross.png';
+}
+
 async function setState() {
-    const serverStatus = document.getElementById('server-status');
+    const serverStatus = document.getElementById('server-message');
     serverStatus.textContent = 'Checking...';
     let status = await isLive();
 
@@ -24,6 +29,9 @@ async function setState() {
     } else {
         serverStatus.textContent = 'Server Offline';
     }
+
+    const serverImage = document.getElementById('server-image');
+    serverImage.src = getPath(status);
 }
 
 setState();
