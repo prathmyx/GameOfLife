@@ -1,5 +1,5 @@
- import { getNextBoard, render, initBoard } from "./board.js"
- import { Game } from "./main.js";
+import { getNextBoard, render, initBoard } from "../board.js"
+import { Game } from "../main.js";
 
 //Next Button
 const nextButton = document.getElementById('next-btn');
