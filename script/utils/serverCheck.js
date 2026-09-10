@@ -33,5 +33,3 @@ export async function setState() {
     const serverImage = document.getElementById('server-image');
     serverImage.src = getPath(status);
 }
-
-setState();
