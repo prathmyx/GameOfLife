@@ -13,3 +13,17 @@ export async function isLive() {
         return false;
     }
 }
+
+async function setState() {
+    const serverStatus = document.getElementById('server-status');
+    serverStatus.textContent = 'Checking...';
+    let status = await isLive();
+
+    if (status) {
+        serverStatus.textContent = 'Connected';
+    } else {
+        serverStatus.textContent = 'Server Offline';
+    }
+}
+
+setState();
