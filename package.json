@@ -20,7 +20,8 @@
   "type": "commonjs",
   "main": "index.html",
   "scripts": {
-    "start": "node --env-file=.env src/server.js"
+    "start": "node --env-file=.env src/server.js",
+    "deploy": "git subtree push --prefix public origin gh-pages"
   },
   "dependencies": {
     "express": "^5.2.1",
