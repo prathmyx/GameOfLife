@@ -11,5 +11,5 @@ app.use('/api/v1/health', healthRouter);
 
 PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    `Server Listening at: http://localhost:${PORT}`;
+    console.log(`Server Listening at: http://localhost:${PORT}`);
 })
