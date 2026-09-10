@@ -1,2 +1,18 @@
 1. rotate reset button 
-2. edit imported variable
+
+
+/api/v1
+get /users
+get /users/:id 
+get /users/:id/games
+get /users/:id/games/:game
+
+post /users
+post /users/:id/games 
+
+put /users/:id
+put /users/:id/games/:game
+
+patch /users/:id 
+
+delete /users/:id 
