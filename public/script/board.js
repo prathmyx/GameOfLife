@@ -1,5 +1,5 @@
 import { ROWS, COLS } from "./config.js";
-import {board, population } from "./main.js";
+import { Game } from "./main.js";
 
 export function initBoard() {
     return Array.from({length : ROWS}, () => Array(COLS).fill(false));
@@ -8,17 +8,17 @@ export function initBoard() {
 export function drawBoard() {
     const canvas = document.getElementById('main-board');
     
-    for (let row = 0; row < board.length; row++) {
-        for (let col = 0; col < board[row].length; col++) {
+    for (let row = 0; row < Game.board.length; row++) {
+        for (let col = 0; col < Game.board[row].length; col++) {
             let cell = document.createElement('button');
 
             cell.dataset.row = row;
             cell.dataset.col = col;
 
-            if (board[row][col]) cell.classList.add("alive");
+            if (Game.board[row][col]) cell.classList.add("alive");
             
             cell.addEventListener('click', () => {
-                board[row][col] = !board[row][col];
+                Game.board[row][col] = !Game.board[row][col];
                 render();
             })
 
@@ -29,18 +29,18 @@ export function drawBoard() {
 
 export function render() {
     const cells = document.querySelectorAll("#main-board button");
-    const popEl = document.getElementById('population-number');
     let count = 0;
     
     cells.forEach(cell => {
         const row = Number(cell.dataset.row);
         const col = Number(cell.dataset.col);
         
-        if (board[row][col]) count++;
-        cell.classList.toggle("alive", board[row][col]);
+        if (Game.board[row][col]) count++;
+        cell.classList.toggle("alive", Game.board[row][col]);
     });
 
-    popEl.textContent = count;
+    Game.population = count;
+    document.getElementById('population-number').textContent = Game.population;
 }
 
 export function getAdjacentCount(row, col) {
@@ -54,7 +54,7 @@ export function getAdjacentCount(row, col) {
             let i = row + di; 
             let j = col + dj;
 
-            if (i >= 0 && i < ROWS && j >= 0 && j < COLS && (board[i][j] === true)) {
+            if (i >= 0 && i < ROWS && j >= 0 && j < COLS && (Game.board[i][j] === true)) {
                 count++;
             }
         }
@@ -68,7 +68,7 @@ export function getNextBoard() {
 
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLS; j++) {
-            const alive = board[i][j];
+            const alive = Game.board[i][j];
             const neighbors = getAdjacentCount(i, j);
 
             if (alive && (neighbors === 2 || neighbors === 3)) {
