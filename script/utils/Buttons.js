@@ -1,6 +1,6 @@
 import { getNextBoard, render, initBoard } from "../board.js"
 import { Game } from "../main.js";
-import { handleLoad } from "../handleLoad.js";
+import { loadGlobalSaves, loadPersonalSaves  } from "../handleLoad.js";
 import { handleSave } from "../handleSave.js";
 
 //Next Button
@@ -99,7 +99,66 @@ function showSignupForm() {
 
 // Load Button 
 const loadButton = document.getElementById('load-btn');
-loadButton.addEventListener('click', handleLoad);
+const closeLoadBtn = document.getElementById('closeBtnLoad');
+
+const modalLoad = document.getElementById('loadModal');
+
+const loadOptionsView = document.getElementById('loadOptionsView');
+const globalView = document.getElementById('globalView');
+const personalView = document.getElementById('personalView');
+
+const showGlobal = document.getElementById('showGlobal');
+const showPersonal = document.getElementById('showPersonal');
+
+const backFromGlobal = document.getElementById('backFromGlobal');
+const backFromPersonal = document.getElementById('backFromPersonal');
+
+
+loadButton.addEventListener('click', () => {
+    modalLoad.classList.add('active');
+
+    showView(loadOptionsView);
+});
+
+closeLoadBtn.addEventListener('click', () => {
+    modalLoad.classList.remove('active');
+});
+
+showGlobal.addEventListener('click', () => {
+    showView(globalView);
+
+    loadGlobalSaves();
+});
+
+
+showPersonal.addEventListener('click', () => {
+    showView(personalView);
+
+    loadPersonalSaves();
+});
+
+
+backFromGlobal.addEventListener('click', () => {
+    showView(loadOptionsView);
+});
+
+
+backFromPersonal.addEventListener('click', () => {
+    showView(loadOptionsView);
+});
+
+
+function showView(view) {
+
+    loadOptionsView.classList.remove('active-view');
+    globalView.classList.remove('active-view');
+    personalView.classList.remove('active-view');
+
+    view.classList.add('active-view');
+}
+
+
+
 
 //Save Button
 const saveButton = document.getElementById('save-btn');

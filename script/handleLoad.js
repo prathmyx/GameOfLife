@@ -1,6 +1,14 @@
 import { SERVER_URL } from "./config.js";
 
-export async function handleLoad() {
+export function loadGlobalSaves() {
+    console.log('Loading global saves...');
+}
+
+export function loadPersonalSaves() {
+    console.log('Loading personal saves...');
+}
+
+async function handleLoad() {
     try {
         let username = 'abc';
         const response = await fetch(`${SERVER_URL}/api/v1/users/${username}/games`);
@@ -14,6 +22,5 @@ export async function handleLoad() {
         console.log('Loaded Succesfully', data);
     } catch (err) {
         console.log(err);
-        statusEl.textContent = err.message;
     }
 }
