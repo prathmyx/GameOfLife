@@ -1,5 +1,5 @@
 import {ROWS, COLS, SIZE} from "./config.js"
-import { initBoard, drawBoard } from "./board.js"
+import { initBoard, drawBoard, render } from "./board.js"
 import { setState } from "./utils/serverCheck.js";
 import { handleAuthClick } from "./handleAuth.js";
 
@@ -11,6 +11,9 @@ export const Game = {
     board: initBoard(),
     draw: () => {
         drawBoard();
+    },
+    render: () => {
+        render();
     }
 }
 

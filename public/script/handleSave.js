@@ -4,6 +4,7 @@ import { Game } from "./main.js";
 export async function handleSave(e) {
     e.preventDefault();
     const statusEl = document.getElementById('save-status');
+    const title = document.getElementById('saveForm').elements['title'];
 
     try {
         let username = 'abc';
@@ -12,7 +13,10 @@ export async function handleSave(e) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({grid: Game.board})
+            body: JSON.stringify({
+                title: title.value,
+                grid: Game.board,
+            })
         });
 
         const data = await response.json();

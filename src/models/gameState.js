@@ -9,10 +9,9 @@ const gameStateSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        default: 'Untitled Game',
     },
     grid: {
-        type: [[Number]],
+        type: [[Boolean]],
         required: true,
     },
     createdAt: {
