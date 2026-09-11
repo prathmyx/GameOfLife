@@ -26,7 +26,7 @@
         </div>
 
         <div id="authModal" class="modal">
-            <div class="auth-box">
+            <div class="modal-box">
 
                 <button id="closeBtn" class="close-btn">&times;</button>
 
@@ -70,7 +70,7 @@
                         <input
                             type="text"
                             name="username"
-                            placeholder="Userame"
+                            placeholder="Username"
                             required
                         >
 
@@ -103,6 +103,48 @@
                     </p>
                 </div>
                 <p id="auth-status"></p>
+            </div>
+        </div>
+
+        <div id="loadModal" class="modal">
+            <div class="modal-box">
+                <button id="closeBtnLoad" class="close-btn">&times;</button>
+
+                <h2>Load Game</h2>
+
+                <div class="load-options load-view" id="loadOptionsView">
+                    <div id="globalLoad" class="load-option">
+                        <button type="button" id="showGlobal">
+                            From Global
+                        </button>
+                    </div>
+
+                    <div id="personalLoad" class="load-option">
+                        <button type="button" id="showPersonal">
+                            My Saves
+                        </button>
+                    </div>
+                </div>
+
+                <div id="globalView" class="load-view"> 
+                    <button type="button" class="back-btn" id="backFromGlobal"> ← </button>
+
+                    <h2>Global Saves</h2>
+                    <div id="globalSaves">
+
+                    </div>
+                </div> 
+                
+                <div id="personalView" class="load-view"> 
+                    <button type="button" class="back-btn" id="backFromPersonal"> ← </button>
+                    
+                    <h2>My Saves</h2>
+                    <div id="personalSaves">
+
+                    </div>
+                </div>
+
+                <p id="load-status"></p>
             </div>
         </div>
 
