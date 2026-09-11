@@ -50,6 +50,16 @@ const showLogin = document.getElementById("showLogin");
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
+modal.addEventListener("click", () => {
+    const statusEl = document.getElementById('auth-status');
+
+    statusEl.textContent = "";
+    statusEl.className = "";
+
+    document.querySelectorAll("input.error").forEach(input => {
+        input.classList.remove("error");
+    });
+});
 
 authBtn.addEventListener("click", () => {
     if (intervalId != null) startButton.click();
