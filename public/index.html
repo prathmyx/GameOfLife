@@ -137,7 +137,7 @@
                 
                 <div id="personalView" class="load-view"> 
                     <button type="button" class="back-btn" id="backFromPersonal"> ← </button>
-                    
+
                     <h2>My Saves</h2>
                     <div id="personalSaves">
 
@@ -145,6 +145,32 @@
                 </div>
 
                 <p id="load-status"></p>
+            </div>
+        </div>
+
+        <div id="saveModal" class="modal">
+            <div class="modal-box">
+
+                <button id="closeSaveBtn" class="close-btn">&times;</button>
+
+                <div id="saveFormContainer">
+                    <h2>Save</h2>
+
+                    <form id="saveForm">
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Untitled Game"
+                            required
+                        >
+
+                        <button type="submit" id="saveBtn">
+                            Save
+                        </button>
+
+                    </form>
+                </div>
+                <p id="save-status"></p>
             </div>
         </div>
 

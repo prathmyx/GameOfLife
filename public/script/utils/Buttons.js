@@ -115,6 +115,7 @@ const backFromPersonal = document.getElementById('backFromPersonal');
 
 
 loadButton.addEventListener('click', () => {
+    if (intervalId != null) startButton.click();
     modalLoad.classList.add('active');
 
     showView(loadOptionsView);
@@ -158,8 +159,24 @@ function showView(view) {
 }
 
 
-
-
 //Save Button
 const saveButton = document.getElementById('save-btn');
-saveButton.addEventListener('click', handleSave);
+const closeSaveBtn = document.getElementById('closeSaveBtn');
+const submitSave = document.getElementById('saveBtn');
+
+const modalSave  = document.getElementById('saveModal');
+
+const saveStatusEl = document.getElementById('save-status');
+
+saveButton.addEventListener('click', () => {
+    saveStatusEl.textContent = "";
+
+    if (intervalId != null) startButton.click();
+    modalSave.classList.add('active');
+});
+
+closeSaveBtn.addEventListener('click', () => {
+    modalSave.classList.remove('active');
+});
+
+submitSave.addEventListener('click', handleSave);
