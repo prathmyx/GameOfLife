@@ -1,5 +1,7 @@
 import { getNextBoard, render, initBoard } from "../board.js"
 import { Game } from "../main.js";
+import { handleLoad } from "../handleLoad.js";
+import { handleSave } from "../handleSave.js";
 
 //Next Button
 const nextButton = document.getElementById('next-btn');
@@ -45,8 +47,12 @@ const closeBtn = document.getElementById("closeBtn");
 const showSignup = document.getElementById("showSignup");
 const showLogin = document.getElementById("showLogin");
 
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+
 
 authBtn.addEventListener("click", () => {
+    if (intervalId != null) startButton.click();
     modal.classList.add("active");
     showLoginForm();
 });
@@ -68,12 +74,23 @@ showLogin.addEventListener("click", () => {
 
 
 function showLoginForm() {
+    loginForm.reset();
     loginContainer.style.display = "block";
     signupContainer.style.display = "none";
 }
 
 
 function showSignupForm() {
+    signupForm.reset();
     loginContainer.style.display = "none";
     signupContainer.style.display = "block";
 }
+
+
+// Load Button 
+const loadButton = document.getElementById('load-btn');
+loadButton.addEventListener('click', handleLoad);
+
+//Save Button
+const saveButton = document.getElementById('save-btn');
+saveButton.addEventListener('click', handleSave);
