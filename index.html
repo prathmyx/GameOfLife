@@ -36,17 +36,19 @@
                     <form id="loginForm">
                         <input
                             type="text"
+                            name="username"
                             placeholder="Username"
                             required
                         >
 
                         <input
                             type="password"
+                            name="password"
                             placeholder="Password"
                             required
                         >
 
-                        <button type="submit">
+                        <button type="submit" id="loginBtn">
                             Login
                         </button>
 
@@ -86,7 +88,7 @@
                             required
                         >
 
-                        <button type="submit">
+                        <button type="submit" id="signBtn">
                             Create Account
                         </button>
                     </form>
@@ -104,7 +106,7 @@
         <div class="container">
             <div class="access">
                 <p>Population: <span id="population-number">0</span></p>
-                <button id="reset-btn">⭯</button>
+                <button id="reset-btn">&#8634;</button>
             </div>
             <div id="main-board"></div>
         </div>
