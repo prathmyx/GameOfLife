@@ -10,62 +10,144 @@ export function handleAuthClick() {
     signupForm.addEventListener('submit', handleSign);
 }
 
+function setLoading(form) {
+    statusEl.textContent = "Please wait...";
+    statusEl.className = "loading";
+
+    const button = form.querySelector('button[type="submit"]');
+
+    if (button) {
+        button.disabled = true;
+        button.classList.add("loading");
+        button.dataset.originalText = button.textContent;
+        button.textContent = "Loading...";
+    }
+}
+
+function clearLoading(form) {
+    const button = form.querySelector('button[type="submit"]');
+
+    if (button) {
+        button.disabled = false;
+        button.classList.remove("loading");
+
+        if (button.dataset.originalText) {
+            button.textContent = button.dataset.originalText;
+        }
+    }
+}
+
+function showError(form, message, fields = []) {
+
+    statusEl.textContent = message;
+    statusEl.className = "error";
+
+    fields.forEach(fieldName => {
+        const field = form.elements[fieldName];
+
+        if (field) {
+            field.classList.add("error");
+        }
+    });
+}
+
 async function handleLogin(e) {
     e.preventDefault();
-    try {
-        const username = loginForm.elements["username"].value;
-        const password = loginForm.elements["password"].value;
 
+    const username = loginForm.elements["username"];
+    const password = loginForm.elements["password"];
+
+    setLoading(loginForm);
+
+    try {
         const response = await fetch(`${SERVER_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
         });
 
         const data = await response.json();
-        
+
         if (!response.ok) {
-            throw new Error(data.error);
+            throw new Error(data.error || "Login failed");
         }
 
-        console.log('Authentication Succesfull');
+        statusEl.textContent = "Login successful!";
+        statusEl.className = "success";
+
+        console.log('Authentication Successful');
+
     } catch (err) {
         console.log(err);
-        statusEl.textContent = err.message;
+
+        showError(
+            loginForm,
+            err.message,
+            ["username", "password"]
+        );
+
+    } finally {
+        clearLoading(loginForm);
     }
 }
 
 async function handleSign(e) {
     e.preventDefault();
+
+    const username = signupForm.elements["username"];
+    const password = signupForm.elements["password"];
+    const cpassword = signupForm.elements["cpassword"];
+
+    if (password.value !== cpassword.value) {
+        showError(
+            signupForm,
+            "Password and Confirm Password are not same!",
+            ["password", "cpassword"]
+        );
+
+        return;
+    }
+
+    setLoading(signupForm);
+
     try {
-        const username = signupForm.elements["username"].value;
-        const password = signupForm.elements["password"].value;
-        const cpassword = signupForm.elements["cpassword"].value;
-
-        if (password != cpassword) {
-            throw new Error("Password and Confirm Password are not same!");
-        }
-
         const response = await fetch(`${SERVER_URL}/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
         });
 
         const data = await response.json();
-        
+
         if (!response.ok) {
-            throw new Error(data.error);
+            throw new Error(data.error || "Signup failed");
         }
 
-        console.log('Authentication Succesfull');
+        statusEl.textContent = "Signup successful!";
+        statusEl.className = "success";
+
+        console.log('Authentication Successful');
+
     } catch (err) {
         console.log(err);
-        statusEl.textContent = err.message;
+
+        showError(
+            signupForm,
+            err.message,
+            ["username", "password", "cpassword"]
+        );
+
+    } finally {
+        clearLoading(signupForm);
     }
 }
-

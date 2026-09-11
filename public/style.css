@@ -143,6 +143,34 @@ body {
     text-decoration: underline;
 }
 
+#auth-status {
+    margin-top: 10px;
+    max-height: 20px;
+    transition: 0.2s ease;
+}
+
+#auth-status.error {
+    color: #dc2626;
+}
+
+#auth-status.success {
+    color: #16a34a;
+}
+
+#auth-status.loading {
+    color: #666;
+}
+
+input.error {
+    border: 2px solid #dc2626;
+    outline: none;
+}
+
+button.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 .server-status {
     position: fixed;
     bottom: 20px;
