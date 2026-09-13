@@ -1,6 +1,7 @@
 import { SERVER_URL } from "./config.js";
 import { Game } from './main.js';
 import globalSaves from "./globalSave.js";
+import mySaves from "./MySaves.js";
 
 export function loadGlobalSaves() {
     render(globalSaves, document.getElementById('globalSaves'));
@@ -27,6 +28,7 @@ async function handleLoad(container) {
         console.log('Loaded Succesfully', data);
     } catch (err) {
         console.log(err);
+        render(mySaves, container);
     }
 }
 
