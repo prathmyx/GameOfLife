@@ -1,4 +1,6 @@
 const express = require('express');
+const cookieParser = require("cookie-parser");
+
 const connectDB = require('./config/db.js');
 
 const setCORS = require('./middlewares/cors.js');
@@ -12,6 +14,7 @@ const app = express();
 connectDB();
 
 app.use(setCORS);
+app.use(cookieParser());
 
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/users', usersRouter);

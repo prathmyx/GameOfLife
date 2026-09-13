@@ -1,4 +1,5 @@
 const userModel = require('../models/user.js');
+const jwt = require('jsonwebtoken');
 
 async function signUpUser(req, res) {
     try {
@@ -16,6 +17,18 @@ async function signUpUser(req, res) {
 
         const user = new userModel({username, password});
         await user.save();
+
+        const token = jwt.sign(
+            { username },
+            process.env.JWT_SECRET,
+            { expiresIn: '1d' }
+        );
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: false
+        });
 
         return res.status(201).json({success: "User Signed Up"});
     } catch (err) {
@@ -37,6 +50,18 @@ async function loginUser(req, res) {
             return res.status(400).json({error: "Username or Password is incorrect"});
         }
 
+        const token = jwt.sign(
+            { username },
+            process.env.JWT_SECRET,
+            { expiresIn: '1d' }
+        );
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: false
+        });
+        
         return res.status(200).json({success: "User Logged in"});
     } catch (err) {
         return res.status(500).json({error: err.message});

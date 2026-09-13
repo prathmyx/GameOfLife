@@ -3,10 +3,10 @@ const userModel = require('../models/user.js');
 
 async function addGame(req, res) {
     try {
-        const user = await userModel.findOne({username: req.params.username});
+        const user = await userModel.findOne({username: req.user.username});
         
         if (!user) {
-            throw new Error("No username");
+            throw new Error("No username Found");
         }
         const {title, grid} = req.body;
 
@@ -26,8 +26,7 @@ async function addGame(req, res) {
 
 async function loadGames(req, res) {
     try {
-        const user = await userModel.findOne({username: req.params.username});
-
+        const user = await userModel.findOne({username: req.user.username});
         if (!user) {
             throw new Error("No username");
         }

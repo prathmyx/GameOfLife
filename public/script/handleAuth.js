@@ -63,8 +63,9 @@ async function handleLogin(e) {
         const response = await fetch(`${SERVER_URL}/auth/login`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
+            credentials: "include",
             body: JSON.stringify({
                 username: username.value,
                 password: password.value
@@ -121,6 +122,7 @@ async function handleSign(e) {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: "include",
             body: JSON.stringify({
                 username: username.value,
                 password: password.value
