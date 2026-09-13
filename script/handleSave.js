@@ -8,12 +8,12 @@ export async function handleSave(e) {
     const title = document.getElementById('saveForm').elements['title'];
 
     try {
-        let username = 'abc';
-        const response = await fetch(`${SERVER_URL}/api/v1/users/${username}/games`, {
+        const response = await fetch(`${SERVER_URL}/api/v1/users/games`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 title: title.value,
                 grid: Game.board,

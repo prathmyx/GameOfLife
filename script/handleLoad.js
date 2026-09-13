@@ -15,8 +15,10 @@ export function loadPersonalSaves() {
 
 async function handleLoad(container) {
     try {
-        let username = 'abc';
-        const response = await fetch(`${SERVER_URL}/api/v1/users/${username}/games`);
+        const response = await fetch(`${SERVER_URL}/api/v1/users/games`, {
+            method: "GET",
+            credentials: "include"
+        });
 
         const data = await response.json();
 
