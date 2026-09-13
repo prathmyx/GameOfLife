@@ -1,8 +1,9 @@
 import { SERVER_URL } from "./config.js";
 import { Game } from './main.js';
+import globalSaves from "./globalSave.js";
 
 export function loadGlobalSaves() {
-    handleLoad(document.getElementById('globalSaves'));
+    render(globalSaves, document.getElementById('globalSaves'));
     console.log('Loading global saves...');
 }
 
@@ -30,7 +31,9 @@ async function handleLoad(container) {
 }
 
 function render(data, container) { 
+    const closeLoadBtn = document.getElementById('closeBtnLoad');
     container.innerHTML = ''; 
+
     data.forEach(element => { 
         const button = document.createElement('button'); 
         button.classList.add('save-item'); 
@@ -39,6 +42,8 @@ function render(data, container) {
         button.addEventListener('click', () => { 
             Game.board = element.grid; 
             Game.render();
+            
+            closeLoadBtn.click();
         }); 
         container.appendChild(button); 
     }); 

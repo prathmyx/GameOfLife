@@ -1,10 +1,16 @@
 import { SERVER_URL } from "./config.js";
 import { Game } from "./main.js";
+import globalSaves from "./globalSave.js";
 
 export async function handleSave(e) {
     e.preventDefault();
     const statusEl = document.getElementById('save-status');
     const title = document.getElementById('saveForm').elements['title'];
+
+    globalSaves.push({
+        title: title.value,
+        grid: Game.board
+    });
 
     try {
         let username = 'abc';
