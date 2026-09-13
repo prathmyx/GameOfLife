@@ -274,12 +274,16 @@ button.loading {
 }
 
 .save-item {
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 12px 15px;
     background: #f3f4f6;
+
     border-radius: 8px;
+    border:none;
 }
 
 .server-status {
