@@ -1,16 +1,11 @@
 import { SERVER_URL } from "./config.js";
 import { Game } from "./main.js";
-import globalSaves from "./globalSave.js";
+import mySaves from "./MySaves.js";
 
 export async function handleSave(e) {
     e.preventDefault();
     const statusEl = document.getElementById('save-status');
     const title = document.getElementById('saveForm').elements['title'];
-
-    globalSaves.push({
-        title: title.value,
-        grid: Game.board
-    });
 
     try {
         let username = 'abc';
@@ -35,6 +30,10 @@ export async function handleSave(e) {
         console.log('Saved Succesfully');
     } catch (err) {
         console.log(err);
-        statusEl.textContent = err.message;
+        mySaves.push({
+            title: title.value,
+            grid: Game.board
+        });
+        statusEl.textContent = "Saved Locally";
     }
 }
