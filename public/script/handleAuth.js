@@ -4,6 +4,7 @@ const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
 const statusEl = document.getElementById('auth-status');
+const usernameEl = document.getElementById('username-display');
 
 export function handleAuthClick() {
     loginForm.addEventListener('submit', handleLogin);
@@ -80,6 +81,7 @@ async function handleLogin(e) {
 
         statusEl.textContent = "Login successful!";
         statusEl.className = "success";
+        usernameEl.textContent = `Hi, ${username.value}`;
 
         console.log('Authentication Successful');
 
@@ -137,6 +139,7 @@ async function handleSign(e) {
 
         statusEl.textContent = "Signup successful!";
         statusEl.className = "success";
+        usernameEl.textContent = `Hi, ${username.value}`;
 
         console.log('Authentication Successful');
 
