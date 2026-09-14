@@ -63,7 +63,7 @@ modal.addEventListener("click", () => {
 });
 
 authBtn.addEventListener("click", () => {
-    if (JSON.parse(authBtn.dataset.logged)) {
+    if (JSON.parse(localStorage.getItem('logged'))) {
         handleLogout();
         return;
     }

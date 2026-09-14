@@ -85,7 +85,9 @@ async function handleLogin(e) {
         statusEl.className = "success";
         usernameEl.textContent = `Hi, ${username.value}`;
         authBtn.textContent = "Logout";
-        authBtn.dataset.logged = true;
+
+        localStorage.setItem('logged', 'true');
+        localStorage.setItem('username', username.value);
 
         console.log('Authentication Successful');
 
@@ -145,7 +147,9 @@ async function handleSign(e) {
         statusEl.className = "success";
         usernameEl.textContent = `Hi, ${username.value}`;
         authBtn.textContent = "Logout";
-        authBtn.dataset.logged = true;
+
+        localStorage.setItem('logged', 'true');
+        localStorage.setItem('username', username.value);
 
         console.log('Authentication Successful');
 
@@ -182,7 +186,10 @@ export async function handleLogout() {
         usernameEl.textContent = `Hi, Guest`;
         console.log('LogOut Successful');
         authBtn.textContent = "Login / Signup";
-        authBtn.dataset.logged = false;
+        
+        localStorage.setItem('logged', 'false');
+        localStorage.setItem('username', "Guest");
+
 
     } catch (err) {
         console.log(err);
