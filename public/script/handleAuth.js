@@ -6,6 +6,8 @@ const signupForm = document.getElementById('signupForm');
 const statusEl = document.getElementById('auth-status');
 const usernameEl = document.getElementById('username-display');
 
+const authBtn = document.getElementById("authBtn");
+
 export function handleAuthClick() {
     loginForm.addEventListener('submit', handleLogin);
     signupForm.addEventListener('submit', handleSign);
@@ -82,6 +84,8 @@ async function handleLogin(e) {
         statusEl.textContent = "Login successful!";
         statusEl.className = "success";
         usernameEl.textContent = `Hi, ${username.value}`;
+        authBtn.textContent = "Logout";
+        authBtn.dataset.logged = true;
 
         console.log('Authentication Successful');
 
@@ -140,6 +144,8 @@ async function handleSign(e) {
         statusEl.textContent = "Signup successful!";
         statusEl.className = "success";
         usernameEl.textContent = `Hi, ${username.value}`;
+        authBtn.textContent = "Logout";
+        authBtn.dataset.logged = true;
 
         console.log('Authentication Successful');
 
@@ -155,4 +161,34 @@ async function handleSign(e) {
     } finally {
         clearLoading(signupForm);
     }
+}
+
+export async function handleLogout() {
+    try {
+        const response = await fetch(`${SERVER_URL}/auth/logout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: "include",
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Logout failed");
+        }
+
+        usernameEl.textContent = `Hi, Guest`;
+        console.log('LogOut Successful');
+        authBtn.textContent = "Login / Signup";
+        authBtn.dataset.logged = false;
+
+    } catch (err) {
+        console.log(err);
+
+    } finally {
+
+    }
+
 }

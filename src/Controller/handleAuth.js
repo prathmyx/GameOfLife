@@ -68,5 +68,20 @@ async function loginUser(req, res) {
     }
 }
 
-module.exports = {signUpUser, loginUser};
+async function logoutUser(req, res) {
+    try {
+        res.cookie("token", '', {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: false,
+            expires: new Date(0)
+        });
+        
+        return res.status(200).json({success: "User Logged Out"});
+    } catch (err) {
+        return res.status(500).json({error: err.message});
+    }
+}
+
+module.exports = {signUpUser, loginUser, logoutUser};
 
