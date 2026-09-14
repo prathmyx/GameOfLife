@@ -26,8 +26,8 @@ async function signUpUser(req, res) {
 
         res.cookie("token", token, {
             httpOnly: true,
-            sameSite: 'lax',
-            secure: false
+            sameSite: 'none',
+            secure: true
         });
 
         return res.status(201).json({success: "User Signed Up"});
@@ -58,8 +58,8 @@ async function loginUser(req, res) {
 
         res.cookie("token", token, {
             httpOnly: true,
-            sameSite: 'lax',
-            secure: false
+            sameSite: 'none',
+            secure: true
         });
         
         return res.status(200).json({success: "User Logged in"});
@@ -72,8 +72,8 @@ async function logoutUser(req, res) {
     try {
         res.cookie("token", '', {
             httpOnly: true,
-            sameSite: 'lax',
-            secure: false,
+            sameSite: 'none',
+            secure: true,
             expires: new Date(0)
         });
         
