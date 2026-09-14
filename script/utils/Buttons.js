@@ -2,6 +2,7 @@ import { getNextBoard, render, initBoard } from "../board.js"
 import { Game } from "../main.js";
 import { loadGlobalSaves, loadPersonalSaves  } from "../handleLoad.js";
 import { handleSave } from "../handleSave.js";
+import { handleLogout } from "../handleAuth.js";
 
 //Next Button
 const nextButton = document.getElementById('next-btn');
@@ -62,6 +63,10 @@ modal.addEventListener("click", () => {
 });
 
 authBtn.addEventListener("click", () => {
+    if (JSON.parse(authBtn.dataset.logged)) {
+        handleLogout();
+        return;
+    }
     if (intervalId != null) startButton.click();
     modal.classList.add("active");
     showLoginForm();
