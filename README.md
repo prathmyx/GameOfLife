@@ -3,6 +3,19 @@ Implementation of John Conway's Game of Life
 
 A full-stack implementation of **Conway's Game of Life**, featuring an interactive frontend, user authentication, game saving and loading, and globally accessible game configurations. The application supports both cloud-based persistence and local storage when the backend is unavailable.
 
+## Live Demo
+
+Experience the Game of Life application live:
+
+🚀 [Play Game of Life](https://prathmyx.github.io/GameOfLife/)
+
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/game-board.png" width="45%" />
+  <img src="screenshots/authentication.png" width="45%" />
+</p>
+
 ## Features
 
 * **Interactive Game of Life** — Simulate Conway's cellular automaton with an interactive game board.
@@ -69,7 +82,7 @@ The frontend and backend are deployed separately, with cross-origin communicatio
 1. Clone the repository:
 
    ```bash
-   git clone <https://github.io>
+   git clone https://github.com/prathmyx/GameOfLife.git
    ```
 
 2. Navigate to the project directory:
